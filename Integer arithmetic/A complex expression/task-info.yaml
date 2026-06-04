@@ -3,10 +3,10 @@ files:
   - name: main.py
     visible: true
     learner_created: false
-feedback_link: https://hyperskill.org/learn/step/6715#comment
+feedback_link: https://hyperskill.org/learn/step/6886#comment
 status: Solved
 feedback:
   message: <html>Correct solution</html>
-  time: "Thu, 04 Jun 2026 15:59:28 UTC"
+  time: "Thu, 04 Jun 2026 18:34:31 UTC"
 record: -1
 submission_language: python3
