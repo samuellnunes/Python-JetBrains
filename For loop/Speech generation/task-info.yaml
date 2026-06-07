@@ -1,0 +1,12 @@
+type: code
+files:
+  - name: main.py
+    visible: true
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/8438#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: "Sun, 07 Jun 2026 03:18:57 UTC"
+record: -1
+submission_language: python3
