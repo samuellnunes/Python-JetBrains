@@ -17,3 +17,7 @@ content:
   - Type casting
   - "Function, arguments and parameters"
   - Functional decomposition
+  - While loop
+  - "Loop control  break, continue, pass"
+  - Importing modules
+  - Identity testing
