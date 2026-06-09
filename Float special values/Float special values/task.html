@@ -1,0 +1,93 @@
+<div class="step-text">
+<p>When thinking about numbers, we tend to imagine something practical and specific, rather than abstract. The first thought might be to count things: how old are we, how many animal species are there on our planet and how many stars in the sky. It comes naturally to our minds, that's why we put the label <em><strong>natural</strong> </em>on those numbers. Yet, there's more to the picture. Counting is not the only thing we are good at. For example, we can measure physical quantities to explore the world around us. These real-life challenges are better described by <em><strong>real</strong> </em>numbers. As you know, <em><strong>floats</strong> </em>represent real numbers in Python, but they have more to offer. Today we will discuss some abstract concepts and find out in what respect the Python floats have gone beyond the real number line.</p>
+<h5 id="what-is-infinity">What is infinity?</h5>
+<p>The concept of infinity might be somewhat difficult to perceive. Let's try to visualize it! We can take our galaxy for starters. Is the Milky Way big enough? Until about 100 years ago, you might have thought so, but the answer is different now (here is a <a href="https://en.wikipedia.org/wiki/Timeline_of_knowledge_about_galaxies,_clusters_of_galaxies,_and_large-scale_structure" rel="noopener noreferrer nofollow" target="_blank">timeline</a> to consult with). So what comes next: two galaxies, a galactic cluster, the universe, the multiverse? Let's stop right there and highlight the pattern of such reasoning.</p>
+<p>When we call something infinite what we basically mean is that it is always possible to add one more. No matter how large is the number we come up with, the infinite value will be greater than it. Say, we've picked a really large number <em>n</em>, well, there will always be <em>n+1</em> and so on.</p>
+<h5 id="infinity-constants">Infinity constants</h5>
+<p>In Python, infinity is a constant greater than any real number. This special value is denoted as <code class="language-python">inf</code>. Where can you encounter it? For example, you intend to convert <code class="language-python">10^3000</code> to float:</p>
+<pre><code class="language-python">print(float(10 ** 3000))  # OverflowError
+print(float("1e3000"))    # inf</code></pre>
+<p>This number is too large to be represented, but you can still convert it to float if you pass it as a floating-point literal. The second line doesn't generate an overflow and returns <code class="language-python">inf</code> instead, which is pleasant because you can work with it and perform further arithmetic operations.</p>
+<p>If you want to experiment with an infinite value, there is a better way to obtain one. Just use floating-point literals again: either <code class="language-python">"infinity"</code> or <code class="language-python">"inf"</code>. The case doesn't matter, what is more, your string may contain leading and trailing whitespace characters:</p>
+<pre><code class="language-python">inf_var = float("INFINITY    ")  # inf
+inf_war = float("INFINITY WAR")  # ValueError: could not convert string to float</code></pre>
+<p>Infinity has a counterpart <code class="language-python">-inf</code>. The negative <a class="theory-lookup not-relevant" href="/learn/step/8804" target="_blank" title="In Python, the infinity constant is a special value denoted by `math.inf` or `float('inf')`. | It is greater than any real number and can be encountered in situations where a value is too large to be represented, such as when converting a large number to float. The infinity constant is part of the floating-point arithmetic system and follows its rules, such as returning infinity in cases of addition, multiplication, or subtraction with an infinite value. It can be used in real-world tasks for comparison and optimization, such as finding the lowest and highest value in a list of values.">infinity constant</a> is less than any real number. You can get it just as easily:</p>
+<pre><code class="language-python">print(float("-inf"))  # -inf</code></pre>
+<p>The constants <code class="language-python">inf</code> and <code class="language-python">-inf</code> support basic <a class="theory-lookup not-relevant" href="/learn/step/8804" target="_blank" title="In Python, arithmetic operations are mathematical calculations that can be performed on numerical values. | Python supports basic arithmetic operations such as addition, subtraction, multiplication, and division. There is a difference between division and integer division. The first produces a floating-point number, while the second one produces an integer value, ignoring the decimal part. Python raises an error if you try to divide by zero. Arithmetic operations can be combined to write more complex expressions. For instance, subtraction or division would be done similarly. The main principle with these methods is to understand what a particular operation means for your object and then define the corresponding method. Python also has a number of methods for augmented assignment, which are a combination of standard arithmetic operations with the assignment. Their names are pretty self-explanatory, such as += or -=. For complex numbers, you can define the method for the += operator, which would work by adding the right operand to the current value of the left operand. Additionally, you can compare objects using comparison operators such as &lt;, &gt;, ==, etc.">arithmetic operations</a>, as all <a class="theory-lookup not-relevant" href="/learn/step/8804" target="_blank" title="In Python, a floating-point number is a data type that represents real number. | It is used for statistical and scientific calculations, and it can also handle special values like infinity and not a number (nan). Floating-point numbers are distinguished from integers by the presence of a decimal point. They can be used for comparison and can be useful in optimizing algorithms, such as finding the lowest and highest value in a list of values. Floats are essential for any programmer, as they can hardly write any program without using numbers.">floating-point numbers</a> do:</p>
+<pre><code class="language-python">inf = float("inf")
+
+# addition
+print(inf + inf)   # inf
+print(inf + 1)     # inf
+
+# multiplication
+print(-inf * -66)  # inf
+print(-inf * inf)  # -inf
+
+# subtraction
+print(-inf - inf)  # -inf
+print(inf - 9999)  # inf</code></pre>
+<p>Let us dwell on a few details. First, you can't have two infinities or double infinity. It's an ever-increasing value in case of <code class="language-python">inf</code>, and sort of the ever-decreasing one when it comes to <code class="language-python">-inf</code>. Both constants are part of the floating-point arithmetic system, so its rules will generally apply. In case of addition, multiplication or subtraction, you are likely to get infinity (the sign depends).</p>
+<pre><code class="language-python"># division
+print(-inf / 100)  # -inf
+print(inf / inf)   # nan
+print(inf / 0.0)   # ZeroDivisionError
+
+# integer division
+print(1 // inf)    # 0.0
+print(inf // 1)    # nan
+print(5.0 // 0)    # ZeroDivisionError</code></pre>
+<p>The division examples may also prompt some questions. In Python, division by zero always raises <code class="language-python">ZeroDivisionError</code>, however, in other programming languages, you can get away with this if at least one of the operands is a real number.</p>
+<p>In real-world tasks, <code class="language-python">inf</code> and <code class="language-python">-inf</code> can be used for comparisons. They can be used to optimize algorithms and find the lowest and the highest values in some list of values, for example, the lowest cost.</p>
+<p>Now, we need to clarify <code class="language-python">nan</code>, to which we devote the next section.</p>
+<h5 id="meet-nan">Meet NaN</h5>
+<p>Floating-point numbers include another special value called <code class="language-python">NaN</code>, which stands for <em><strong>N</strong>ot <strong>a</strong> <strong>N</strong>umber</em>. <code class="language-python">NaN</code> is not equal to any floating-point number (including <em>itself</em> and <em>±inf</em>). The idea behind <code class="language-python">NaN</code> is that forbidden arithmetic operations still need a value to return. Here is an example:</p>
+<pre><code class="language-python">pos_inf = float("+inf")
+neg_inf = float("-inf")
+
+print(pos_inf + neg_inf)  # nan
+</code></pre>
+<p>As you are well aware, multiplication by zero results in zero. The <code class="language-python">NaN</code> value is even more contagious: most arithmetic operations on it return <code class="language-python">NaN</code>. However, a counter-example is <code class="language-python">NaN ** 0</code>, it produces <em>1.0</em>.</p>
+<p></p>
+<div class="alert alert-primary">The systematic use of <em>NaN</em> and <em>infinity constants</em> was introduced by the <strong>IEEE 754</strong> standard in 1985. IEEE 754 specified how numeric values should be represented in computer hardware and addressed many issues found in diverse floating-point implementations.</div>
+<p></p>
+<h5 id="nan-vs-none">NaN vs None</h5>
+<p>Although, the constants <code class="language-python">NaN</code> and <code class="language-python">None</code> sound similar, there is a difference between them. <code class="language-python">None</code> is a singleton object that denotes no value at all. <code class="language-python">None</code> evaluates to <code class="language-python">False</code> in <a class="theory-lookup not-relevant" href="/learn/step/8804" target="_blank" title="In Python, a boolean expression is an expression that evaluates to a boolean value, either True or False. | These expressions are often built using boolean operators such as and, or, and not, which allow you to combine and negate other expressions. Python uses short-circuit evaluation for boolean expressions, which means that if the first expression in an and or or operation is sufficient to determine the result, Python won't evaluate the other expressions. Additionally, Python has the concept of truthy and falsy values, where some values (such as empty lists, empty strings, and the number 0) are considered false in a boolean context, while all other values are considered true. The `bool()` function can be used to explicitly convert any value to a boolean.">boolean expressions</a>, while <code class="language-python">NaN</code> doesn't. As opposed to <code class="language-python">None</code>, <code class="language-python">NaN</code> is different in every given case, it never equals to itself: you should consider <code class="language-python">NaN != NaN</code> true.</p>
+<p>The real-world application of <code class="language-python">NaN</code> is related to the lack of numerical data. Missing values crop up in datasets due to numerous reasons. When the data is insufficient, <code class="language-python">NaN</code> is commonly used to substitute missing floating-point values. Try not to mistake it for <code class="language-python">None</code>.</p>
+<h5 id="mathisnan">math.isnan()</h5>
+<p>Since the equality test <code class="language-python">NaN == NaN</code> doesn't work as intended, you might wonder how to test for <code class="language-python">NaN</code> values. There is a solution in the standard library. The function <code class="language-python">isnan(x)</code> from the <em><strong>math</strong></em> module determines whether <em>x</em> is a floating-point <em>"not a number"</em> value.</p>
+<pre><code class="language-python">import math
+
+
+inf = math.inf   # an alternative way
+nan = math.nan   # to get the constants
+
+math.isnan(nan)  # True
+math.isnan(inf)  # False
+math.isnan(0.0)  # False</code></pre>
+<p>The function returns <code class="language-python">True</code> only when its argument is <code class="language-python">NaN</code>.</p>
+<h5 id="mathisinf">math.isinf()</h5>
+<p>The <em><strong>math</strong></em> module also provides a function <code class="language-python">isinf()</code> to check for an <em>infinity</em> value (either positive or negative).</p>
+<pre><code class="language-python">math.isinf(inf)   # True
+math.isinf(-inf)  # True
+math.isinf(3.14)  # False</code></pre>
+<p>As seen from the example, <code class="language-python">math.isinf()</code> works for both <code class="language-python">inf</code> and <code class="language-python">-inf</code> and returns a <a class="theory-lookup not-relevant" href="/learn/step/8804" target="_blank" title="In Python, a boolean value is a special data type that can have only two possible values: True or False. | These values are used to represent the two opposite states of something, such as on or off, yes or no. The values of non-boolean types, such as integers or strings, are called truthy or falsy, depending on whether they are interpreted as true or false. In Python, the following values are evaluated as false: constant defined to be false (None), zero of any numeric type (0, 0.0, 0j), empty sequences and containers ([], (), {}, set()), and empty strings ('', b''). Anything else generally evaluates to true.">boolean value</a>.</p>
+<h5 id="mathisfinite">math.isfinite()</h5>
+<p>The function <code class="language-python">math.isfinite(x)</code> returns <code class="language-python">True</code> if <em>x</em> is neither an <em>infinity </em>value nor a <em>NaN</em>, and <code class="language-python">False</code> otherwise.</p>
+<pre><code class="language-python">math.isfinite(7.54)  # True
+math.isfinite(inf)   # False
+math.isfinite(nan)   # False</code></pre>
+<p><code class="language-python">math.isfinite()</code> helps find the floating-point numbers distinct from the special values.</p>
+<p></p>
+<div class="alert alert-primary">Similar functions can be found at other resources. For example, the library for scientific computing <a href="https://numpy.org/" rel="noopener noreferrer nofollow" target="_blank">NumPy</a> provides the following functions: <em>isinf</em>, <em>isposinf</em>, <em>isneginf</em>, <em>isnan</em> and <em>isfinite</em>. We recommend that you use some of the mentioned functions, for they are more likely to return the up-to-standard result.</div>
+<p></p>
+<h5 id="summary">Summary</h5>
+<p>Let's go over the main points:</p>
+<ul>
+<li>Python floats include the special values <code class="language-python">inf</code>, <code class="language-python">-inf</code> and <code class="language-python">nan</code>.</li>
+<li>The <code class="language-python">inf</code> constant is greater than any real number. To create it, use <code class="language-python">float("inf")</code> or <code class="language-python">math.inf</code>. Its main use case is comparisons.</li>
+<li>The <code class="language-python">-inf</code> constant is less than any floating-point number. You can obtain it via <code class="language-python">float("-inf")</code> or <code class="language-python">-math.inf</code>. It has the same application as <code class="language-python">inf</code>.</li>
+<li>The <code class="language-python">nan</code> constant stands for <em>"not a number"</em> and is not equal to any float. You can encounter <code class="language-python">nan</code> when dealing with data analysis. It often indicates missing floating-point values in the dataframes. Use <code class="language-python">float("nan")</code> or <code class="language-python">math.nan</code> to get it.</li>
+<li>The <strong><em>math</em></strong> module has functions designed for special value tests: <code class="language-python">math.isinf()</code>, <code class="language-python">math.isnan()</code>, <code class="language-python">math.isfinite()</code>.</li>
+</ul>
+</div>

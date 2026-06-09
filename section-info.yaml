@@ -21,3 +21,6 @@ content:
   - "Loop control  break, continue, pass"
   - Importing modules
   - Identity testing
+  - Float special values
+  - Math functions
+  - Random module

@@ -1,0 +1,14 @@
+type: code
+files:
+  - name: main.py
+    visible: true
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/6268#comment
+status: Solved
+feedback:
+  message: |-
+    <html>You've used all 7 of your lives for today.
+    Use this pause to revisit theory, and we'll see you tomorrow for more practice!</html>
+  time: "Tue, 09 Jun 2026 15:00:12 UTC"
+record: -1
+submission_language: python3

@@ -5,8 +5,5 @@ files:
     learner_created: false
 feedback_link: https://hyperskill.org/learn/step/6607#comment
 status: Solved
-feedback:
-  message: <html>Correct solution</html>
-  time: "Mon, 08 Jun 2026 14:53:50 UTC"
 record: -1
 submission_language: python3
