@@ -24,3 +24,5 @@ content:
   - Float special values
   - Math functions
   - Random module
+  - Quotes and multi-line strings
+  - Working with strings  basic methods
