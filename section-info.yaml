@@ -26,3 +26,8 @@ content:
   - Random module
   - Quotes and multi-line strings
   - Working with strings  basic methods
+  - Search in a string
+  - Splitting strings and joining lists
+  - String formatting
+  - Escape sequences
+  - Sep and end arguments of print
